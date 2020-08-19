@@ -8,7 +8,7 @@ export default class ServiceWorker {
 			if (response.ok) {
 				this.searchId = await response.json();
 			} else {
-				console.log('err');
+				console.log('ошибка получения search_id');
 			}
 		} catch (err) {
 			this.error = err;
@@ -22,10 +22,9 @@ export default class ServiceWorker {
 			);
 			if (response.ok) {
 				let tickets = await response.json();
-				// console.log(tickets);
 				return tickets;
 			} else {
-				console.log('err');
+				console.log('ошибка получения данных');
 			}
 		} catch (err) {
 			this.error = err;

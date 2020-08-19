@@ -6,7 +6,6 @@ import * as actions from '../../Redux/Actions/actions';
 function Tabs({ tabsState, cheapHandler, fastHandler }) {
 	return (
 		<div className="tabs">
-			{console.log(tabsState)}
 			<button className={`tabs__tab  ${tabsState.cheap ? 'tabs__tab--active' : null}`} onClick={cheapHandler}>
 				Самый дешевый
 			</button>

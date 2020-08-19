@@ -11,9 +11,7 @@ function CardList({ cardList, sidebar, tabs, getAllTickets }) {
 
 	useEffect(
 		() => {
-			getAllTickets().catch((err) => {
-				console.log(err);
-			});
+			getAllTickets().catch((err) => {});
 		},
 		[ getAllTickets ]
 	);
@@ -32,7 +30,6 @@ function CardList({ cardList, sidebar, tabs, getAllTickets }) {
 	const antIcon = <LoadingOutlined style={{ fontSize: 42 }} spin />;
 	return (
 		<div className="card-list">
-			{console.log(all, no, t1, t2, t3)}
 			{cardList !== null ? tabs.cheap ? (
 				renderCheapCards(cardList, sidebar, ticketsLength)
 			) : (

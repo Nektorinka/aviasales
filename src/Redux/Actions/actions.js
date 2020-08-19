@@ -47,7 +47,6 @@ export function getAllTickets() {
 			}
 			let tickets = await myService.getTickets();
 			if (tickets.tickets && !tickets.stop) {
-				console.log(tickets);
 				await dispatch(setTecketsInStore(tickets.tickets));
 				setTimeout(cb(dispatch), 800);
 			}
