@@ -6,7 +6,7 @@ function App() {
 	return (
 		<React.Fragment>
 			<div className="logo">
-				<img src="./src/static/Logo.svg" alt="LOGO" className="logo__img" />
+				<img src="./Logo.svg" alt="LOGO" className="logo__img" />
 			</div>
 			<SideBar />
 			<Content />

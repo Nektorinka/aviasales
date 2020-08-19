@@ -24,6 +24,17 @@ button {
 		border: none;
 	}
 }
+.loader {
+	color: #2196f3;
+	display: flex;
+	justify-content: center;
+	margin: 40px 0;
+}
+.load-more {
+	color: #2196f3;
+	font-size: 20px;
+	margin: 20px 0;
+}
 .root {
 	display: flex;
 	justify-content: center;
