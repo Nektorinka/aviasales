@@ -28,17 +28,22 @@ function CardList({ cardList, sidebar, tabs, getAllTickets }) {
 	);
 
 	const antIcon = <LoadingOutlined style={{ fontSize: 42 }} spin />;
+	const loader = (
+		<div className="loader">
+			<Spin indicator={antIcon} />
+		</div>
+	);
 	return (
 		<div className="card-list">
+			{console.log(cardList)}
 			{cardList !== null ? tabs.cheap ? (
 				renderCheapCards(cardList, sidebar, ticketsLength)
 			) : (
 				renderFastCards(cardList, sidebar, ticketsLength)
 			) : (
-				<div className="loader">
-					<Spin indicator={antIcon} />
-				</div>
+				loader
 			)}
+			{cardList.length == 0 ? loader : null}
 			{!all && !no && !t1 && !t2 && !t3 ? null : loadMore}
 		</div>
 	);
