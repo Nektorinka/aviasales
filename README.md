@@ -1,1 +1,1 @@
-https://aviasales-tau.vercel.app/
+https://aviasales.nektorinka.vercel.app/
