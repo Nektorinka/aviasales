@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { renderCheapCards, renderFastCards } from './cardListFunctions';
@@ -35,15 +34,14 @@ function CardList({ cardList, sidebar, tabs, getAllTickets }) {
 	);
 	return (
 		<div className="card-list">
-			{console.log(cardList)}
 			{cardList !== null ? tabs.cheap ? (
-				renderCheapCards(cardList, sidebar, ticketsLength)
+				renderCheapCards(cardList.tickets, sidebar, ticketsLength)
 			) : (
-				renderFastCards(cardList, sidebar, ticketsLength)
+				renderFastCards(cardList.tickets, sidebar, ticketsLength)
 			) : (
 				loader
 			)}
-			{cardList.length == 0 ? loader : null}
+			{cardList.isLoading ? loader : null}
 			{!all && !no && !t1 && !t2 && !t3 ? null : loadMore}
 		</div>
 	);
@@ -57,8 +55,6 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators(actions, dispatch);
-};
+const { getAllTickets } = actions;
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardList);
+export default connect(mapStateToProps, { getAllTickets, renderCheapCards, renderFastCards })(CardList);

@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as actions from '../../Redux/Actions/actions';
 
 function SideBar({ sidebar, allHandler, noHandler, t1Handler, t2Handler, t3Handler }) {
 	const { all, no, t1, t2, t3 } = sidebar;
 
-	useEffect(() => {
-		if (no && t1 && t2 && t3 && !all) {
-			allHandler();
-		}
-	});
+	useEffect(
+		() => {
+			if (no && t1 && t2 && t3 && !all) {
+				allHandler();
+			}
+		},
+		[ all, no, t1, t2, t3 ]
+	);
 
 	return (
 		<div className="left-column">
@@ -55,8 +57,5 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
-	return bindActionCreators(actions, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+const { allHandler, noHandler, t1Handler, t2Handler, t3Handler } = actions;
+export default connect(mapStateToProps, { allHandler, noHandler, t1Handler, t2Handler, t3Handler })(SideBar);

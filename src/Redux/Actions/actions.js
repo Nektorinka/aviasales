@@ -1,4 +1,4 @@
-import ServiceWorker from '../../services/service-worker';
+import ServiceWorker from '../../services/ServiceApi';
 
 export function allHandler() {
 	return {
@@ -48,10 +48,10 @@ export function getAllTickets() {
 			let tickets = await myService.getTickets();
 			if (tickets.tickets && !tickets.stop) {
 				await dispatch(setTecketsInStore(tickets.tickets));
-				setTimeout(cb(dispatch), 800);
+				setTimeout(cb(dispatch), 300);
 			}
 		} catch (error) {
-			setTimeout(cb(dispatch), 800);
+			setTimeout(cb(dispatch), 300);
 		}
 	};
 }

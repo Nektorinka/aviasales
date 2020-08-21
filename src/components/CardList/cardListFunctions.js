@@ -75,7 +75,9 @@ export function renderCheapCards(responceArray, sidebarState, maxTickets = 10) {
 export function renderFastCards(responceArray, sidebarState, maxTickets = 10) {
 	const newArray = [ ...responceArray ];
 	newArray.sort((a, b) => {
-		return a.segments[0].duration - b.segments[0].duration;
+		const aDuration = a.segments[0].duration + a.segments[1].duration;
+		const bDuration = b.segments[0].duration + b.segments[1].duration;
+		return aDuration - bDuration;
 	});
 
 	let res = [];
